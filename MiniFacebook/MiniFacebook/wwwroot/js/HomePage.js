@@ -68,12 +68,14 @@ function Liked(id) {
 //Show Comments
 function showComments(id) {
     id = parseInt(id.substring(13));
+    console.log('Show Comments');
     console.log(id, typeof id);
     $.ajax({
         method: 'Post',
         url: 'LoadComments',
         data: { postid: id }, 
         success: function (data) {
+            console.log(data);
             document.getElementById('comments_' + id).innerHTML = '';
             data += '<br /> <input type="text" class="col-7 d-inline form-control" id="commentContent_' + id +'"/>';
             data += '<button class="btn animated-button col-4 ml-4 mb-1 " id="addcomment_"' + id + ' onclick="addComment(' + id + ')">Comment</button>';
@@ -85,7 +87,8 @@ function showComments(id) {
 //---------------------------------------------------------------------------
 function addComment(pid) {
 
-
+    console.log(pid);
+    console.log(pid);
     var comm = {}
     comm.PostID = pid;
     comm.CommentText = document.getElementById('commentContent_' + pid).value;
